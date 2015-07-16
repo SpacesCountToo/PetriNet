@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<petrinet>
+    <f id="1" x="1" y="1">
+        <f id="2" x="1" y="1">
+            <f id="3" x="1" y="1"></f>
+            <t id="4" x="2" y="1"></t>
+            <f id="5" x="3" y="1"></f>
+            <w from="3" to="4"></w>
+            <w from="4" to="5"></w>
+        </f>
+        <t id="6" x="2" y="1"></t>
+        <f id="7" x="3" y="1"></f>
+        <f id="8" x="3" y="2"></f>
+        <w from="2" to="6">
+            <w from="5" to="6"></w>
+        </w>
+        <w from="6" to="7"></w>
+        <w from="6" to="8"></w>
+    </f>
+    <t id="9" x="2" y="1">
+        <t id="a" x="1" y="1"></t>
+        <t id="b" x="1" y="2"></t>
+        <f id="c" x="2" y="1"></f>
+        <t id="d" x="3" y="1"></t>
+        <w from="a" to="c"></w>
+        <w from="b" to="c"></w>
+        <w from="c" to="d"></w>
+    </t>
+    <f id="e" x="3" y="1"></f>
+    <t id="g" x="4" y="1">
+        <t id="h" x="1" y="1"></t>
+        <f id="i" x="2" y="1"></f>
+        <t id="j" x="3" y="1"></t>
+        <t id="k" x="3" y="2"></t>
+        <t id="l" x="4" y="1"></t>
+        <w from="h" to="i"></w>
+        <w from="i" to="j"></w>
+        <w from="i" to="k"></w>
+        <w from="i" to="l"></w>
+    </t>
+    <f id="m" x="5" y="1">
+        <f id="n" x="1" y="1">
+            <f id="o" x="1" y="1"></f>
+            <t id="p" x="2" y="1"></t>
+            <f id="q" x="3" y="1"></f>
+            <w from="o" to="p"></w>
+            <w from="p" to="q"></w>
+        </f>
+        <t id="r" x="6" y="1"></t>
+        <f id="s" x="1" y="1"></f>
+    </f>
+    <w from="1" to="9">
+        <w from="7" to="a"></w>
+        <w from="8" to="b"></w>
+    </w>
+    <w from="9" to="e">
+        <w from="d" to="f"></w>
+    </w>
+    <w from="e" to="g">
+        <w from="e" to="h"></w>
+    </w>
+    <w from="g" to="m">
+        <w from="j" to="n"></w>
+        <w from="k" to="n"></w>
+        <w from="l" to="n"></w>
+    </w>
+</petrinet>
