@@ -1,7 +1,6 @@
 ## IMPORTS ##
 
 from lxml import etree,html  # Need to process XML
-from BeautifulSoup import BeautifulSoup as bs
 
 ## variables ##
 
