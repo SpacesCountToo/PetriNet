@@ -1,0 +1,8 @@
+<head>
+    <title>Add Unit</title>
+</head>
+<form action="/objectify/add/" method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Add Unit">
+</form>

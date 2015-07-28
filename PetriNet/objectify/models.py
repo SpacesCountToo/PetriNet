@@ -20,6 +20,9 @@ class Unit(MPTTModel):
 
     parent = TreeForeignKey('self', blank=True, null=True, related_name='children', db_index=True)
 
+    x_val = models.IntegerField(blank=True, null=True)
+    y_val = models.IntegerField(blank=True, null=True)
+
     class MPTTMeta:
         order_insertion_by = ['human_readable_name']
     def __unicode__(self):

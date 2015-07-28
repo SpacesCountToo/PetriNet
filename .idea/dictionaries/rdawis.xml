@@ -2,7 +2,10 @@
   <dictionary name="rdawis">
     <words>
       <w>doctype</w>
+      <w>endrecursetree</w>
       <w>petrinet</w>
+      <w>pnet</w>
+      <w>recursetree</w>
       <w>reformats</w>
       <w>webkit</w>
     </words>
