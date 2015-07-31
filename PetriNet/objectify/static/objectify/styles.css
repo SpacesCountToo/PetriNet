@@ -1,19 +1,38 @@
 html,body{
-    height:98%;
+    height: 98%;
+    background-color: #4c4c4c;
 }
 .draggable {
     cursor:move;
     height:15%;
     width:15%;
     z-index:1;
+    position:absolute;
+}
+.2, .3, .4{
+    display:none;
+}
+iframe{
+    border: none;
+}
+
+#add_unit > *{
+    font-size: 12px;
+    margin-bottom:15px;
+}
+
+a{
+    cursor:pointer;
+    color:#FFFFFF;
 }
 
 .rect,.ellipse {
     height:100%;
-    width:100%;
-    text-align:center;
-    border-width:1px;
-    border-style:solid;
+    width: 100%;
+    text-align: center;
+    border-width: 1px;
+    border-style: solid;
+    border-color: #FF9933;
     -webkit-transition: all 1s ease;
     -moz-transition: all 1s ease;
     -ms-transition: all 1s ease;

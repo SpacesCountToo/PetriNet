@@ -1,13 +1,6 @@
 README
-This is more or less a formality at this point >.>
-XMLStyle.py -- reformats XML into SVG to be interpreted by a browser.
-               XSL was too much to handle, though this project might've been sooner
-                 finished had everyone implemented XSL2 into their browsers. meh.
-               Recursion get!
-               now to figure out how turn this into an internet file >.>
-               still need to figure out how to prettify the code for readability.
-                 I mean, it works, but I want this.
 
-test_net.xml -- a test file so that I can check if the XML is being converted correctly
-               Currently being hardcoded into the program:
-                 Add feature to use PHP to get/post an XML file?
+MODELS:
+    UNITS: Used for storing data about type of object, name, and child/parent status
+    CONNECTIONS: Used for storing data about connections between objects.
+
