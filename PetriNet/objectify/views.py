@@ -9,6 +9,7 @@ from models import Unit,Connection
 
 class PetriNetView(TemplateView):
     template_name = 'objectify/pnet.html'
+
     def get_context_data(self, **kwargs):
         context = super(PetriNetView, self).get_context_data(**kwargs)
         context['nodes'] = Unit.objects.all()
@@ -18,7 +19,15 @@ class PetriNetView(TemplateView):
         return context
     def post(self, request, *args, **kwargs):
         context = self.get_context_data(**kwargs)
-        print request.POST
+        for posted in self.request.POST:
+            print '%s:%s' % (posted,self.request.POST[posted])
+        # print self.request.POST
+        context['formset'] = SaveUnitFormSet(self.request.POST)
+        if context['formset'].is_valid():
+            for form in context['formset']:
+                print form
+                form.save()
+
         # if context['add_unit_form'].is_valid():
         #     instance = context['add_unit_form'].save(commit=False)
         #     instance.save()

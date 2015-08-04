@@ -12,6 +12,9 @@ class AddUnitForm(ModelForm):
         )
 
 class SaveUnitForm(ModelForm):
+    # def __init__(self, *args, **kwargs):
+    #     super(SaveUnitForm, self).__init__(*args, **kwargs)
+    #     self.unitname = self.instance.uuid_name
     class Meta:
         model = Unit
         fields = (

@@ -4,12 +4,15 @@
       onsubmit="saveSubmit()">
     {% csrf_token %}
     {% for item in saveset %}
-        <input type="hidden"
-               name="{{ item.uuid_name.value }}-x_val"
-               value="{{ item.x_val.value }}" />
-        <input type="hidden"
-               name="{{ item.uuid_name.value }}-y_val"
-               value="{{ item.y_val.value }}" />
+        <div id="{{ item.uuid_name.value }}-x_val">
+            {{ item.x_val }}
+        </div>
+
+        <div id="{{ item.uuid_name.value }}-y_val">
+            {{ item.y_val }}
+        </div>
+        {{ item.uuid_name }}
     {% endfor %}
+    {{ saveset.management_form }}
     <input type="submit" value="Save Units">
 </form>

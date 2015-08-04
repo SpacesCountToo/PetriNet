@@ -54,17 +54,17 @@
         <!--});-->
     <!--</script>-->
     <script>
-        function SaveSubmit(){
+        function saveSubmit(){
             {% for node in nodes %}
-            document.getElementByName('{{ node.uuid_name }}-x_val').setAttribute(
-                'value',
-                document.getElementById('{{ node.uuid_name }}').data-x
-            )
-            document.getElementByName('{{ node.uuid_name }}-y_val').setAttribute(
-                'value',
-                document.getElementById('{{ node.uuid_name }}').data-y
-            )
+            document.getElementById('{{ node.uuid_name }}-x_val').childNodes[1]['value'] =
+                document.getElementById('{{ node.uuid_name }}').getAttribute('data-x');
+
+            document.getElementById('{{ node.uuid_name }}-y_val').childNodes[1]['value'] =
+                document.getElementById('{{ node.uuid_name }}').getAttribute('data-y');
+
             {% endfor %}
+            return true;
+        }
     </script>
 
     <title>PetriNet Editor</title>
@@ -89,14 +89,20 @@
         {% if node.shape == 'O' %}
             <div class="ellipse">
                 <a>{{ node.human_readable_name }}</a>
+                {% if not node.is_leaf_node %}
+                    {{ children }}
+                {% endif %}
+            </div>
         {% elif node.shape == 'L' %}
             <div class="rect">
                 <a>{{ node.human_readable_name }}</a>
-        {% endif %}
-        {% if not node.is_leaf_node %}
-            {{ children }}
-        {% endif %}
+                {% if not node.is_leaf_node %}
+                    {{ children }}
+                {% endif %}
             </div>
+        {% endif %}
+
+
     </div>
 {% endrecursetree %}
 </div>
