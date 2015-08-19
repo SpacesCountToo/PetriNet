@@ -1,7 +1,51 @@
 html,body{
     height: 98%;
-    background-color: #4c4c4c;
+    background-color: #4D505B;
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, color-stop(.5, rgba(255, 255, 255, .2)), color-stop(.5, transparent), to(transparent));
+    background-image: -moz-linear-gradient(rgba(255, 255, 255, .2) 50%, transparent 50%, transparent);
+    background-image: -o-linear-gradient(rgba(255, 255, 255, .2) 50%, transparent 50%, transparent);
+    background-image: linear-gradient(rgba(255, 255, 255, .2) 50%, transparent 50%, transparent);
+    -webkit-background-size: 50px 50px;
+    -moz-background-size: 50px 50px;
+    background-size: 50px 50px;
 }
+.tool{
+    clear:both;
+}
+.tool input,button{
+    display: block;
+    float:left;
+    margin:2px;
+}
+#add_u_form input{
+    display: inline-block;
+}
+#add_unit > *{
+    font-size: 12px;
+    margin-bottom:15px;
+}
+iframe{
+    border: none;
+    display: none;
+    position:absolute;
+    z-index:999;
+}
+#toolbar{
+    z-index:2;
+    height:35px;
+}
+
+canvas{
+    height:100%
+    width:100%
+}
+
+#container{
+    position:relative;
+    height:100%;
+    z-index:0;
+}
+
 .draggable {
     cursor:move;
     height:15%;
@@ -9,35 +53,22 @@ html,body{
     z-index:1;
     position:absolute;
 }
-.2, .3, .4{
-    display:none;
-}
-iframe{
-    border: none;
-}
-
-#add_unit > *{
-    font-size: 12px;
-    margin-bottom:15px;
-}
-
-a{
-    cursor:pointer;
-    color:#FFFFFF;
-}
-
 .rect,.ellipse {
     height:100%;
-    width: 100%;
+    position:relative;
     text-align: center;
-    border-width: 1px;
+    border-width: 2px;
     border-style: solid;
-    border-color: #FF9933;
     -webkit-transition: all 1s ease;
     -moz-transition: all 1s ease;
     -ms-transition: all 1s ease;
     -o-transition: all 1s ease;
     transition: all 1s ease;
+    border-color: #4D505B;
+}
+.rect{
+    border-radius: 5px;
+    background:#CF4858;
 }
 .ellipse{
     -webkit-border-radius: 50% / 50%;
@@ -45,11 +76,5 @@ a{
     -ms-border-radius: 50% / 50%;
     -o-border-radius: 50% / 50%;
     border-radius: 50% / 50%;
+    background:#80628B
 }
-/*.rect:hover,.ellipse:hover {
-    -webkit-transform: scale(1.25);
-    -moz-transform: scale(1.25);
-    -ms-transform: scale(1.25);
-    -o-transform: scale(1.25);
-    transform: scale(1.25);
-}*/

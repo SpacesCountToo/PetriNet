@@ -14,23 +14,40 @@ class PetriNetView(TemplateView):
         context = super(PetriNetView, self).get_context_data(**kwargs)
         context['nodes'] = Unit.objects.all()
         context['wires'] = Connection.objects.all()
-        context['nodect'] = range(len(Unit.objects.all()))
+        context['nodect'] = range(
+            max(
+                [unit.level for unit in Unit.objects.all()]
+            ) + 1
+        )
         context['saveset'] = SaveUnitFormSet()
         return context
     def post(self, request, *args, **kwargs):
         context = self.get_context_data(**kwargs)
-        for posted in self.request.POST:
-            print '%s:%s' % (posted,self.request.POST[posted])
-        # print self.request.POST
-        context['formset'] = SaveUnitFormSet(self.request.POST)
-        if context['formset'].is_valid():
-            for form in context['formset']:
-                print form
-                form.save()
+        # for posted in self.request.POST:
+        #     print '%s:%s' % (posted,self.request.POST[posted])
+        print context['saveset']
+        formset = SaveUnitFormSet(self.request.POST)
+        if formset.is_valid():
+            for form in formset:
+                instance = form.save(commit=False)
+                print instance
+                if instance.human_readable_name == '':
+                    pass
+                else:
+                    if instance.x_val == \
+                        Unit.objects.get(uuid_name=instance.uuid_name).x_val and \
+                        instance.y_val == \
+                        Unit.objects.get(uuid_name=instance.uuid_name).y_val:
+                        pass
+                    else:
+                        instance.x_val=int(instance.x_val)
+                        instance.y_val=int(instance.y_val)
+                        print 'saving %s data:' % instance.human_readable_name
+                        print 'x-val = %f\ny-val = %f' % \
+                              (instance.x_val,instance.y_val)
 
-        # if context['add_unit_form'].is_valid():
-        #     instance = context['add_unit_form'].save(commit=False)
-        #     instance.save()
+                        instance.save()
+
         return self.render_to_response(context)
     # def get(self, request, *args, **kwargs):
     #     context = self.get_context_data(**kwargs)

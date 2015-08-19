@@ -1,7 +1,7 @@
 <form name="save_form"
       action="./"
       method="post"
-      onsubmit="saveSubmit()">
+      onsubmit="return saveSubmit()">
     {% csrf_token %}
     {% for item in saveset %}
         <div id="{{ item.uuid_name.value }}-x_val">
@@ -14,5 +14,5 @@
         {{ item.uuid_name }}
     {% endfor %}
     {{ saveset.management_form }}
-    <input type="submit" value="Save Units">
+    <input type="submit" value="S" id="save_button">
 </form>

@@ -33,9 +33,10 @@ class Unit(MPTTModel):
         db_index=True
     )
 
-    x_val = models.IntegerField(default=0)
-    y_val = models.IntegerField(default=0)
-
+    # x_val = models.DecimalField(max_digits=13, decimal_places=9, default=0)
+    # y_val = models.DecimalField(max_digits=13, decimal_places=9, default=0)
+    x_val = models.FloatField(default=0)
+    y_val = models.FloatField(default=0)
     class MPTTMeta:
         order_insertion_by = ['human_readable_name']
     def __unicode__(self):

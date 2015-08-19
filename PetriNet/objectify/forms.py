@@ -1,6 +1,6 @@
 from django.forms import ModelForm,HiddenInput
 from django.forms.models import modelformset_factory
-from models import Unit
+from models import Unit,Connection
 
 class AddUnitForm(ModelForm):
     class Meta:
@@ -31,3 +31,15 @@ SaveUnitFormSet = modelformset_factory(
     Unit,
     form=SaveUnitForm
 )
+
+class AddConnectionForm(ModelForm):
+    class Meta:
+        model = Connection
+        fields = (
+            'source',
+            'destination',
+        )
+        widgets = {
+            'source':HiddenInput(),
+            'destination':HiddenInput(),
+        }

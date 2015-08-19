@@ -1,5 +1,34 @@
-<form name="add_form" action="/objectify/add/" method="post">
+<style>
+    #add_form{
+        background:rgba(10,10,10,.7);
+        padding: 5%;
+        border-radius: 10px;
+    }
+    #add_form p{
+        color:white;
+        width:60px;
+    }
+    #add_form select{
+        width:200px;
+    }
+    #add_form input{
+        width:200px;
+</style>
+<form name="add_form"
+      id="add_form"
+      action="/objectify/add/"
+      method="post"
+      onsubmit="window.parent.location.reload()">
     {% csrf_token %}
-    {{ form.as_p }}
+    {{ form.human_readable_name.errors }}
+    <input id="id_human_readable_name"
+           maxlength="50"
+           name="human_readable_name"
+           type="text"
+           placeholder="Name" />
+    {{ form.shape.errors }}
+    <p>Shape: {{ form.shape }}</p>
+    {{ form.parent.errors }}
+    <p>Parent: {{ form.parent }}</p>
     <input type="submit" value="Add Unit">
 </form>
