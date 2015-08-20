@@ -9,6 +9,10 @@ html,body{
     -moz-background-size: 50px 50px;
     background-size: 50px 50px;
 }
+
+body{
+    margin:0;
+}
 .tool{
     clear:both;
 }

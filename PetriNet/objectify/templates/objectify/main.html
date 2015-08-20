@@ -1,0 +1,69 @@
+{% load mptt_tags %}
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>PetriNet Editor</title>
+    <!-- STYLE -->
+    <link rel="stylesheet"
+          type="text/css"
+          href="{% static 'objectify/styles.css' %}" />
+    <!--End Style-->
+
+    <!-- LIBRARIES -->
+    <script src="{% static 'objectify/interact.js' %}"></script>
+    <script src="{% static 'objectify/dom.jsPlumb-1.7.6.js' %}"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/jquery-ui.min.js"></script>
+    <script src="{% static 'objectify/jquery.cookie.js' %}"
+    <!--End Libraries-->
+    <!-- SCRIPTS -->
+    <script src="{% static 'objectify/toggleForm.js' %}"></script>
+    {% include 'objectify/plumbing.js' %}
+    <script src="{% static 'objectify/dragaction.js' %}"></script>
+    {% include 'objectify/save_unit_submit.js' %}
+    {% include 'objectify/visibility.js' %}
+    <!--End Scripts-->
+</head>
+
+<body>
+<div id="toolbar" class="tool">
+    <input type="button" value="+" id="add_button">
+    <div id="save_conn">
+        {% include 'objectify/save_conns.html' %}
+    </div>
+    <div id="save_unit">
+        {% include 'objectify/save_units.html' %}
+    </div>
+    <div id="add_unit">
+        <iframe id="add_u_form" src="/objectify/add" seamless="" height="300" width="300">
+        </iframe>
+    </div>
+    <button id="toggle_connect">D</button>
+</div>
+<div id="container">
+{% recursetree nodes %}
+    <div class="draggable"
+         id="{{ node.uuid_name }}"
+         style="left:{{ node.x_val }}px; top:{{ node.y_val }}px;"
+         data-x="{{ node.x_val }}"
+         data-y="{{ node.y_val }}">
+            <div class="
+            {% if node.shape == 'O' %}
+            ellipse
+            {% elif node.shape == 'L' %}
+            rect
+            {% endif %}
+            level-{{ node.level }}">
+                {{ node.human_readable_name }}
+        {% if not node.is_leaf_node %}
+            {{ children }}
+        {% endif %}
+            </div>
+
+    </div>
+{% endrecursetree %}
+</div>
+</body>
+</html>
