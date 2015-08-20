@@ -40,16 +40,31 @@
         });
         jsPlumb.toggleSourceEnabled("{{ node.uuid_name }}");
         {% endfor %}
-        jsPlumb.on(document.getElementById("toggle_connect"),'click',function(e){
-        if (this.innerHTML == "D"){
-            this.innerHTML = "/"
-        }
-        else {
-            this.innerHTML = "D"
-        }
-        {% for node in nodes %}
+        if ($.cookie('connect-toggled') == 'connect-mode'){
+            console.log($('#toggle_connect').html())
+            $('#toggle_connect').html("/")
+            {% for node in nodes %}
             jsPlumb.toggleSourceEnabled("{{ node.uuid_name }}");
-        {% endfor %}
+            {% endfor %}
+        }
+
+        jsPlumb.on($('#toggle_connect'),'click',function(e){
+        console.log($.cookie('connect-toggled'))
+        if ($.cookie('connect-toggled') == 'connect-mode'){
+            $(this).html("D");
+            $.cookie('connect-toggled', 'drag-mode',{ expires:1 });
+        }
+        else if ($.cookie('connect-toggled') == 'drag-mode'){
+            $(this).html("/");
+            $.cookie('connect-toggled', 'connect-mode',{ expires:1 });
+        }
+        else if (!$.cookie('connect-toggled')){
+            $(this).html("/");
+            $.cookie('connect-toggled','connect-mode',{ expires:1 })
+        }
+            {% for node in nodes %}
+            jsPlumb.toggleSourceEnabled("{{ node.uuid_name }}");
+            {% endfor %}
             jsPlumbUtil.consume(e);
         });
 

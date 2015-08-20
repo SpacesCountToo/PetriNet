@@ -2,7 +2,12 @@
   <dictionary name="rdawis">
     <words>
       <w>doctype</w>
+      <w>dragaction</w>
+      <w>elif</w>
       <w>endrecursetree</w>
+      <w>googleapis</w>
+      <w>jqueryui</w>
+      <w>petri</w>
       <w>petrinet</w>
       <w>pnet</w>
       <w>recursetree</w>
